@@ -1,6 +1,11 @@
 require 'csv'
 
 class DataImporter
+  GRADE_MAPPING = {
+    "A" => "a",
+    "B" => "b"
+  }
+
   def run
     Restaurant.transaction do
       File.open(file_path, "r") do |file|
@@ -9,7 +14,7 @@ class DataImporter
             Restaurant.create!(
               name: row[1],
               address: row[2],
-              grade: row[14],
+              grade: GRADE_MAPPING[row[14]],
               grade_date: grade_date(row[8])
             )
           end

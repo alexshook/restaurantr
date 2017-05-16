@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe DataImporter do
+  describe "GRADE_MAPPING" do
+    it "contains the correct grade mapping" do
+      expect(DataImporter::GRADE_MAPPING).to eq({"A"=>"a", "B"=>"b"})
+    end
+  end
+
   let(:data_importer) { DataImporter.new }
 
   describe "#run" do
