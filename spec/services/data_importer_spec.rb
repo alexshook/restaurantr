@@ -19,10 +19,29 @@ describe DataImporter do
         data_importer.stub(:file_path).and_return(test_file)
       end
 
-      it "adds restaurants with grading of B and better to the database" do
+      it "adds the three matching restaurants to the database" do
         expect do
           data_importer.run
         end.to change { Restaurant.count }.by(3)
+      end
+
+      it "has only restaurants with grades A and B" do
+        data_importer.run
+        expect(Restaurant.pluck(:grade)).to eq(["a", "a", "b"])
+      end
+
+      describe "the first restaurant" do
+        let(:restaurant) { Restaurant.first }
+
+        it "has the correct attributes" do
+          data_importer.run
+          expect(restaurant.name).to eq("Lemongrass Grill")
+          expect(restaurant.address).
+            to eq("156 Court Street, Brooklyn, NY 11201")
+          expect(restaurant.grade).to eq("a")
+          expect(restaurant.grade_date).
+            to eq("Mon, 01 Jan 1900 00:00:00 UTC +00:00")
+        end
       end
     end
 
