@@ -15,7 +15,8 @@ class DataImporter
               name: row[1].titleize,
               address: assemble_address(row),
               grade: GRADE_MAPPING[row[14]],
-              grade_date: grade_date(row[8])
+              grade_date: grade_date(row[8]),
+              cuisine: row[7]
             )
           end
         end

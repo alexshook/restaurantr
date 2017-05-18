@@ -41,6 +41,8 @@ describe DataImporter do
           expect(restaurant.grade).to eq("a")
           expect(restaurant.grade_date).
             to eq("Mon, 01 Jan 1900 00:00:00 UTC +00:00")
+          expect(restaurant.cuisine).to eq("Thai")
+
         end
       end
     end
