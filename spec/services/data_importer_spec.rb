@@ -19,10 +19,10 @@ describe DataImporter do
         data_importer.stub(:file_path).and_return(test_file)
       end
 
-      it "adds Thai restaurants with grading of B and better to the database" do
+      it "adds restaurants with grading of B and better to the database" do
         expect do
           data_importer.run
-        end.to change { Restaurant.count }.by(2)
+        end.to change { Restaurant.count }.by(3)
       end
     end
 

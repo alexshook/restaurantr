@@ -10,7 +10,7 @@ class DataImporter
     Restaurant.transaction do
       File.open(file_path, "r") do |file|
         CSV.foreach(file, headers: false) do |row|
-          if acceptable_thai_restaurant?(row)
+          if acceptable_grade_restaurant?(row)
             Restaurant.create!(
               name: row[1],
               address: row[2],
@@ -29,8 +29,7 @@ class DataImporter
 
   private
 
-  def acceptable_thai_restaurant?(row)
-    return unless row[7] == "Thai"
+  def acceptable_grade_restaurant?(row)
     row[14] == "A" || row[14] == "B"
   end
 
