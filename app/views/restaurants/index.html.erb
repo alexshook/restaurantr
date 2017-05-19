@@ -1,5 +1,5 @@
 <div class="row full-width whitespace center">
-  <h1>Welcome to Restaurantr!</h1>
+  <h1><%= link_to "Welcome to Restaurantr!", root_path, class: "no-decoration" %></h1>
   <div class="row twelve columns">
     <h5>We list only quality restaurants with A or B health grades.</h5>
   </div>
@@ -9,23 +9,19 @@
       <span class="label-body">
         What kind of restaurant are you looking for?
       </span>
-      <%= text_field_tag :cuisine, nil, placeholder: "Thai" %>
+      <%= text_field_tag :cuisine, nil, placeholder: "Thai, American, etc." %>
       <%= submit_tag "Search", class: "button-primary" %>
     </div>
   <% end %>
 </div>
 
-<% if @restaurants %>
-  <div class="row full-width whitespace">
-
-  </div>
-
+<% if @results.presence %>
   <div class="row full-width whitespace center">
     <h4>Here are the ten most recently graded matching restaurants:</h4>
   </div>
     <div class="twelve-columns">
       <ol>
-        <% @restaurants.each do |restaurant| %>
+        <% @results.each do |restaurant| %>
           <div class="row">
             <div class="twelve-columns">
               <li><%= restaurant.name %> - Grade <%= restaurant.grade.capitalize %></li>
@@ -37,5 +33,9 @@
           </ul>
         <% end %>
       </ol>
+  </div>
+<% else %>
+  <div class="row full-width whitespace center">
+    <%= @error_message %>
   </div>
 <% end %>

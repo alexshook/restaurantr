@@ -5,3 +5,7 @@
 .whitespace {
   margin: 5% auto;
 }
+
+.no-decoration {
+  text-decoration: none;
+}
