@@ -7,7 +7,7 @@ describe Restaurant do
     end
   end
 
-  describe ".thai" do
+  describe ".cuisine" do
     let!(:thai_restaurant) do
       Restaurant.create!(
         cuisine: "Thai",
@@ -24,8 +24,22 @@ describe Restaurant do
       )
     end
 
-    it "returns a Thai restaurant" do
-      expect(Restaurant.thai).to eq([thai_restaurant])
+    context "when given cuisine 'Thai'" do
+      it "returns a Thai restaurant" do
+        expect(Restaurant.cuisine("Thai")).to eq([thai_restaurant])
+      end
+    end
+
+    context "when given cuisine 'Bakery'" do
+      it "returns a bakery" do
+        expect(Restaurant.cuisine("Bakery")).to eq([bakery])
+      end
+    end
+
+    context "when given a cuisine that does not exist in the database" do
+      it "returns []" do
+        expect(Restaurant.cuisine("Foo")).to eq([])
+      end
     end
   end
 
