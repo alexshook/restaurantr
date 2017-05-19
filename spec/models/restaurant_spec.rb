@@ -24,15 +24,15 @@ describe Restaurant do
       )
     end
 
-    context "when given cuisine 'Thai'" do
+    context "when given cuisine 'thai'" do
       it "returns a Thai restaurant" do
-        expect(Restaurant.cuisine("Thai")).to eq([thai_restaurant])
+        expect(Restaurant.cuisine("thai")).to eq([thai_restaurant])
       end
     end
 
-    context "when given cuisine 'Bakery'" do
+    context "when given cuisine 'bakery'" do
       it "returns a bakery" do
-        expect(Restaurant.cuisine("Bakery")).to eq([bakery])
+        expect(Restaurant.cuisine("bakery")).to eq([bakery])
       end
     end
 
