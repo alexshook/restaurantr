@@ -1,24 +1,13 @@
-# README
+# Restaurantr
+---
+Restaurantr is an app that returns New York City restaurants with health grades of A or B. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Search by cuisine to get a list of ten matching most recently graded restaurants. 
 
-Things you may want to cover:
+It has one model called Restaurant with name, address, cuisine, grade, and grade_date.
 
-* Ruby version
+* name, address, cuisine are strings with cuisine having a limit of 100 characters. No cuisines are currently longer than that. 
+* grade is using enums so stored as an integer. 
+* grade_date is stored as a DateTime so it's possible to filter on it.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ERD: [erd.pdf](https://github.com/alexshook/restaurantr/blob/master/erd.pdf)
