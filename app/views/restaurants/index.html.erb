@@ -1,15 +1,41 @@
-Welcome to Restaurantr!
+<div class="row full-width whitespace center">
+  <h1>Welcome to Restaurantr!</h1>
+  <div class="row twelve columns">
+    <h5>We list only quality restaurants with A or B health grades.</h5>
+  </div>
 
-We list restaurants with A or B health grades.
-
-<%= form_tag :restaurants, method: :get do %>
-  What kind of restaurant are you looking for?
-   <%= text_field_tag :cuisine, nil, placeholder: "Thai" %>
-
-   <% submit_tag "Search" %>
-<% end %>
-
+  <%= form_tag :restaurants, method: :get do %>
+    <div class="row twelve columns">
+      <span class="label-body">
+        What kind of restaurant are you looking for?
+      </span>
+      <%= text_field_tag :cuisine, nil, placeholder: "Thai" %>
+      <%= submit_tag "Search", class: "button-primary" %>
+    </div>
+  <% end %>
+</div>
 
 <% if @restaurants %>
+  <div class="row full-width whitespace">
 
+  </div>
+
+  <div class="row full-width whitespace center">
+    <h4>Here are the ten most recently graded matching restaurants:</h4>
+  </div>
+    <div class="twelve-columns">
+      <ol>
+        <% @restaurants.each do |restaurant| %>
+          <div class="row">
+            <div class="twelve-columns">
+              <li><%= restaurant.name %> - Grade <%= restaurant.grade.capitalize %></li>
+            </div>
+          </div>
+          <ul>
+            <li><%= restaurant.address %></li>
+            <li>Last graded on <%= restaurant.grade_date.strftime("%B %d, %Y") %>.</li>
+          </ul>
+        <% end %>
+      </ol>
+  </div>
 <% end %>
