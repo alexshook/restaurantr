@@ -1,0 +1,15 @@
+Welcome to Restaurantr!
+
+We list restaurants with A or B health grades.
+
+<%= form_tag :restaurants, method: :get do %>
+  What kind of restaurant are you looking for?
+   <%= text_field_tag :cuisine, nil, placeholder: "Thai" %>
+
+   <% submit_tag "Search" %>
+<% end %>
+
+
+<% if @restaurants %>
+
+<% end %>
